@@ -1,0 +1,109 @@
+# Compulsory Learning Task
+# Create a meaningful data visualisation.
+
+data(package = "ggplot2")
+
+# Call the diamonds data set from ggplot2
+ggplot2::diamonds
+
+# To learn more about the diamond data set in ggplot2
+?diamonds 
+
+# Adding colours to the outer border of the bars
+ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, colour = cut))
+
+# Using the fill parameter
+ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = cut)) +
+  labs( title = "Bar chart Showing the Quality of Diamond",
+        x = "Quality of cut",
+        y = "Count")
+
+# Using the position = "dodge" makes it easier to compare individual values
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge") +
+  labs( title = "Bar chart Showing the Quality of Diamond per clarity",
+        x = "Quality of cut",
+        y = "Count")   
+
+#1. Write an R program to create three vectors a, b, c with 5 integers.
+#Combine the three vectors to become a 3×5 matrix where each column 
+#represents a vector. Print the content of the matrix. 
+#Plot a graph and label correctly.
+
+a<-c(1,2,3,4,5)
+b<-c(4,5,6,7,8)
+c<-c(7,8,9,10,11)
+m<-cbind(a,b,c)
+print("The 3x5 Matrix is: ")
+print(m)
+
+#2. Write a R program to create a Data frames which contain details of 5 employees 
+#and display the details. (Name, Age, Role and Length of service).
+
+Employees = data.frame(Name=c("Jamie oliver","Jeremy Kyle","Jeffery Auld", "Sarah Peters","Lauren Martin"),
+                       Gender=c("M","M","M","F","F"),
+                       Age=c(24,31,35,42,32),
+                       Role=c("Supervisor","Manager","Non Executive Officer","Chief Executive Officer","Operations Manager")
+                       ,LengthOfService=c(1.5, 2.5, 1.25, 1, 0.5)
+)
+print("Company Christmas Ruffle Shortlist:") 
+
+print(Employees)
+
+
+#3. Import the GGPLOT 2 library and plot a graph using the qplot function. 
+#X axis is the sequence of 1:20 and the y axis is the x ^ 2. 
+#Label the graph appropriately. install.packages("ggplot2", dependencies = TRUE)
+
+library(ggplot2)
+ggplot2::mpg
+?mpg
+?qplot
+qplot(displ, hwy, data = mpg, xlab = "Engine Displacement (L)",
+      ylab = "Highway Fuel Economy",
+      geom = "point", colour = class,
+      main = "Fuel efficiency generally decreases with engine size")
+
+x <- seq(1,20)
+y <- x**2
+
+qplot(x, y, xlab = "Sequence", ylab = "Exponent", main = "Graph of Sequence against Exponent",
+      geom = "smooth")
+
+
+#4. Create a simple bar plot of five subjects
+
+marks = c(70, 95, 80, 74, 85)
+barplot(marks,
+        main = "Comparing marks of 5 subjects",
+        xlab = "Marks",
+        ylab = "Subject",
+        names.arg = c("English", "Science", "Mathematics", "History", "Physics"),
+        col = "darkred",
+        horiz = FALSE)
+
+#5. Write a R program to take input from the user (name and age) and display the values.
+myname <- readline(prompt="Enter your name: ")
+myage <- readline(prompt="Enter your age: ")
+# convert character into integer
+myage <- as.integer(myage)
+print(paste("Hi," myname, "You are," myage, next year you will be", myage+1, "years old."))
+
+#6. Write a R program to create a sequence of numbers from 20 to 50
+#Find the mean of numbers from 20 to 50 and the sum of the numbers.
+print("Sequence of numbers from 20 to 50:")
+print(seq(20,50))
+print("Mean of numbers from 20 to 50:")
+print(mean(20:50))
+print("Sum of numbers from 20 to 50:")
+print(sum(20:50))
+
+
+#7. Write a R program to create a vector which contains 
+# 10 random integer values between -50 and +50
+
+floor(runif(10, min = -50, max = 50))
+
+
+
+
